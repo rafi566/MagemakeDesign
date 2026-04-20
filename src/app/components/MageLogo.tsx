@@ -1,55 +1,12 @@
-import logoImage from "../../imports/image.png";
+import logoSrc from "../../imports/image-1.png";
 
 export function MageIcon({ size = 280 }: { size?: number }) {
   return (
-    <svg
-      viewBox="0 0 512 512"
-      width={size}
-      height={size}
-      fill="none"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* Left half of M — MAGE orange */}
-      <path
-        d="M 88 440 L 88 96 L 256 288"
-        stroke="url(#mage_grad_orange)"
-        strokeWidth="84"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Right half of M — MAGE blue */}
-      <path
-        d="M 256 288 L 424 96 L 424 440"
-        stroke="url(#mage_grad_blue)"
-        strokeWidth="84"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <defs>
-        <linearGradient
-          id="mage_grad_orange"
-          x1="256"
-          y1="54"
-          x2="88"
-          y2="482"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#F36F21" />
-          <stop offset="1" stopColor="#F8A65C" />
-        </linearGradient>
-        <linearGradient
-          id="mage_grad_blue"
-          x1="424"
-          y1="54"
-          x2="256"
-          y2="482"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#1E448C" />
-          <stop offset="1" stopColor="#2684FF" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <img
+      src={logoSrc}
+      alt="MAGE Logo"
+      style={{ width: size, height: size, objectFit: "contain", flexShrink: 0 }}
+    />
   );
 }
 

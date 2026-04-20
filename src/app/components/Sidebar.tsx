@@ -30,9 +30,12 @@ export function Sidebar() {
 
   return (
     <aside
-      className={`flex flex-col bg-white border-r border-gray-200 h-screen sticky top-0 transition-all duration-300 shrink-0 ${
-        collapsed ? "w-[68px]" : "w-[260px]"
-      }`}
+      style={{
+        width: collapsed ? 68 : 260,
+        transition: 'width 250ms cubic-bezier(0.4, 0, 0.2, 1)',
+        willChange: 'width',
+      }}
+      className="flex flex-col bg-white border-r border-gray-200 h-screen sticky top-0 shrink-0"
     >
       {/* Logo */}
       <div className={`px-4 pt-5 pb-3 ${collapsed ? "px-3 flex justify-center" : ""}`}>

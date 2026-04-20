@@ -48,28 +48,30 @@ interface StatCardProps {
 
 function StatCard({ label, value, icon: Icon, bg, iconColor, trend, subtitle }: StatCardProps) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-7 flex flex-col gap-4 hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col gap-4 hover:shadow-xl transition-shadow"
+      style={{ boxShadow: '0 4px 24px -4px rgba(0,0,0,0.08), 0 2px 8px -2px rgba(0,0,0,0.04)' }}
+    >
       <div className="flex items-center justify-between">
-        <span className="text-[13px] text-gray-500 uppercase tracking-wider">{label}</span>
-        <div className={`w-11 h-11 rounded-xl ${bg} flex items-center justify-center`}>
-          <Icon className={`w-5 h-5 ${iconColor}`} />
+        <span className="text-[14px] text-gray-500 uppercase tracking-wider">{label}</span>
+        <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center`}>
+          <Icon className={`w-6 h-6 ${iconColor}`} />
         </div>
       </div>
       <div>
-        <span className="text-[34px] text-gray-900 tracking-tight">{value}</span>
+        <span className="text-[38px] text-gray-900 tracking-tight">{value}</span>
         {subtitle && (
-          <p className="text-[12px] text-gray-400 mt-1">{subtitle}</p>
+          <p className="text-[13px] text-gray-400 mt-1">{subtitle}</p>
         )}
       </div>
       {trend && (
         <div className="flex items-center gap-1.5">
           {trend.positive ? (
-            <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
+            <TrendingUp className="w-4 h-4 text-emerald-500" />
           ) : (
-            <TrendingDown className="w-3.5 h-3.5 text-red-500" />
+            <TrendingDown className="w-4 h-4 text-red-500" />
           )}
           <span
-            className={`text-[12px] ${
+            className={`text-[13px] ${
               trend.positive ? "text-emerald-600" : "text-red-600"
             }`}
           >
@@ -107,23 +109,25 @@ function CoverageChart({
   emptyValue,
 }: CoverageChartProps) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 hover:shadow-md transition-shadow">
-      <div className="mb-5">
-        <h3 className="text-[16px] text-gray-900">{title}</h3>
-        <p className="text-[13px] text-gray-400 mt-0.5">{subtitle}</p>
+    <div className="bg-white rounded-2xl border border-gray-200 p-9 hover:shadow-xl transition-shadow"
+      style={{ boxShadow: '0 4px 24px -4px rgba(0,0,0,0.08), 0 2px 8px -2px rgba(0,0,0,0.04)' }}
+    >
+      <div className="mb-6">
+        <h3 className="text-[18px] text-gray-900">{title}</h3>
+        <p className="text-[14px] text-gray-400 mt-0.5">{subtitle}</p>
       </div>
 
       <div className="flex flex-col sm:flex-row items-center gap-8">
         {/* Chart */}
-        <div className="relative w-[220px] h-[220px] shrink-0">
-          <ResponsiveContainer width={220} height={220}>
+        <div className="relative w-[240px] h-[240px] shrink-0">
+          <ResponsiveContainer width={240} height={240}>
             <PieChart>
               <Pie
                 data={data}
                 cx="50%"
                 cy="50%"
-                innerRadius={65}
-                outerRadius={95}
+                innerRadius={70}
+                outerRadius={105}
                 paddingAngle={3}
                 dataKey="value"
                 strokeWidth={0}
@@ -145,46 +149,46 @@ function CoverageChart({
           </ResponsiveContainer>
           {/* Center label */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-            <span className="text-[26px] text-gray-900">{percentage}%</span>
-            <span className="text-[11px] text-gray-400 uppercase tracking-wider">Coverage</span>
+            <span className="text-[30px] text-gray-900">{percentage}%</span>
+            <span className="text-[12px] text-gray-400 uppercase tracking-wider">Coverage</span>
           </div>
         </div>
 
         {/* Legend */}
         <div className="flex flex-col gap-4 flex-1 w-full">
-          <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-5">
             <div
               className="w-3.5 h-3.5 rounded-full shrink-0"
               style={{ backgroundColor: colors[0] }}
             />
             <div className="flex-1 min-w-0">
-              <p className="text-[13px] text-gray-500">{filledLabel}</p>
-              <p className="text-[18px] text-gray-900">
+              <p className="text-[14px] text-gray-500">{filledLabel}</p>
+              <p className="text-[20px] text-gray-900">
                 {filledValue.toLocaleString()}
               </p>
             </div>
-            <span className="text-[13px] text-gray-400">
+            <span className="text-[14px] text-gray-400">
               {((filledValue / total) * 100).toFixed(1)}%
             </span>
           </div>
-          <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-4">
+          <div className="flex items-center gap-3 bg-gray-50 rounded-xl p-5">
             <div
               className="w-3.5 h-3.5 rounded-full shrink-0"
               style={{ backgroundColor: colors[1] }}
             />
             <div className="flex-1 min-w-0">
-              <p className="text-[13px] text-gray-500">{emptyLabel}</p>
-              <p className="text-[18px] text-gray-900">
+              <p className="text-[14px] text-gray-500">{emptyLabel}</p>
+              <p className="text-[20px] text-gray-900">
                 {emptyValue.toLocaleString()}
               </p>
             </div>
-            <span className="text-[13px] text-gray-400">
+            <span className="text-[14px] text-gray-400">
               {((emptyValue / total) * 100).toFixed(1)}%
             </span>
           </div>
           <div className="flex items-center gap-3 border-t border-gray-100 pt-4 px-1">
-            <span className="text-[13px] text-gray-400">Total</span>
-            <span className="text-[16px] text-gray-700 ml-auto">
+            <span className="text-[14px] text-gray-400">Total</span>
+            <span className="text-[18px] text-gray-700 ml-auto">
               {total.toLocaleString()}
             </span>
           </div>
@@ -198,19 +202,19 @@ export function DashboardPage() {
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-blue-700 to-indigo-800 px-8 pt-10 pb-20 shrink-0">
+      <div className="bg-gradient-to-br from-blue-700 to-indigo-800 px-8 pt-10 pb-24 shrink-0">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-white text-[28px] tracking-tight">
+          <h1 className="text-white text-[32px] tracking-tight">
             Metadata Dashboard
           </h1>
-          <p className="text-blue-200 text-[14px] mt-2 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-blue-200 text-[15px] mt-2 max-w-2xl mx-auto leading-relaxed">
             Monitor statistik metadata MAGE (Metadata Automated Generation Engine) — cakupan tabel, kolom, dan status ingestion ke EDC.
           </p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-5xl mx-auto w-full px-6 -mt-16 pb-8 flex flex-col gap-8">
+      <div className="max-w-6xl mx-auto w-full px-6 -mt-16 pb-8 flex flex-col gap-8">
         {/* Stat Cards - Top Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <StatCard
