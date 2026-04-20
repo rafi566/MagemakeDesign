@@ -1,5 +1,6 @@
 import { MageLogo } from "./MageLogo";
 import kataLogo from "../../imports/image.png";
+import dataCatalogLogo from "../../imports/image-2.png";
 import { useState } from "react";
 import { NavLink } from "react-router";
 import {
@@ -109,6 +110,8 @@ export function Sidebar() {
             >
               {app.name.includes("KATA") ? (
                 <img src={kataLogo} alt="KATA Logo" className="w-5 h-5 object-contain shrink-0" />
+              ) : app.name.includes("Data Catalog") ? (
+                <img src={dataCatalogLogo} alt="Data Catalog Logo" className="w-5 h-5 object-contain shrink-0" />
               ) : (
                 <div
                   className="w-5 h-5 rounded shrink-0"
